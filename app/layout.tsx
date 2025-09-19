@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Source_Sans_3, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Header from "./components/header";
+import FooterYes from "./components/footer";
 
 const fontSans = Source_Sans_3({
   variable: "--font-sans",
@@ -28,23 +29,9 @@ export default function RootLayout({
       <body
         className={`${fontSans.variable} ${fontMono.variable} antialiased`}
       >
-        <header className="border-b border-gray-200">
-          <div className="container mx-auto py-4">
-            <h1 className="text-2xl font-bold">My App</h1>
-            <nav>
-              <Link href="/" className="mr-4">
-                Home
-              </Link>
-              <Link href="/about" className="mr-4">
-                About
-              </Link>
-              <a href="/about/team" className="mr-4">
-                Team
-              </a>
-            </nav>
-          </div>
-        </header>
+          <Header />
         {children}
+          <FooterYes />
       </body>
     </html>
   );
