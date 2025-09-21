@@ -1,10 +1,18 @@
 import Link from "next/link";
 import { Post } from "../types/post";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Posts Page',
+    description: 'This is the posts page of the application.',
+}
 
 async function getPost(): Promise<Post[]> {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const res = await fetch(`http://localhost:2000/posts/`);
     const posts = await res.json();
     return posts;
+
 }
 
 export default async function PostsPage() {
@@ -22,7 +30,9 @@ export default async function PostsPage() {
                     <p className="text-gray-600 ">{post.content}</p>
                     <p className="text-gray-400">By {post.author}</p>
                     <p className="text-gray-500">{post.description}</p>
+                    
                 </article>
+                
             ))}
         </div>
     );

@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'About Page',
+    description: 'This is the about page of the application.',
+}
+
 export default function AboutPage() {
   return (
     <div className="container mx-auto px-4 py-8">

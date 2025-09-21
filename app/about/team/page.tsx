@@ -1,3 +1,10 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Team Page',
+    description: 'This is the team page of the application.',
+}
+
 export default function TeamPage() {
   return (
     <div className="container mx-auto px-4 py-8 ">

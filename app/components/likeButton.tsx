@@ -3,11 +3,11 @@
 import { useTransition } from "react";
 import { createLike } from "../action";
 
-export default function LikeButton() {
+export default function LikeButton({postId}: {postId: string}) {
     const [pending, startTransition] = useTransition();
     async function handleLike() {
         startTransition(async () => {
-            await createLike();
+            await createLike(postId);
         });
     }
 

@@ -1,5 +1,16 @@
 import { CommentForm } from "@/app/components/commentForm";
 import LikeButton from "@/app/components/likeButton";
+import CommentPage from "./comments";
+import { Suspense } from "react";
+
+export async function generateMetadata({params}:{params: Promise<{slug:string}>}) {
+    const {slug} = await params;
+    const post = await getPost(slug);
+    return {
+        title: post.title,
+        description: post.description,
+    }
+}
 
 async function getPost(slug:string) {
     const res = await fetch(`http://localhost:2000/posts/?slug=` + slug);
@@ -19,11 +30,14 @@ export default async function PostPage({params}:{params: Promise<{slug:string}>}
             <p className="text-gray-400 mb-2">By {post.author}</p>
             <p className="text-gray-500">{post.description}</p>
             <hr className="my-4 border-gray-300     " />
-            <LikeButton />
+            <LikeButton postId={post.id} />
         </div>
         </article> 
         <section className="container mx-auto p-4 border-t mt-4 pt-4">
             <h2 className="text-2xl font-bold mb-4">Comments</h2>
+            <Suspense fallback={<p>Loading comments...</p>}>
+                <CommentPage />
+            </Suspense>
             <CommentForm />
         </section>
         </>

@@ -1,5 +1,11 @@
 import Image from "next/image";
 import animee from "../public/animeee.jpg"
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: 'Home Page',
+    description: 'This is the home page of the application.',
+}
 
 export default function Home() {
   return (

@@ -17,7 +17,7 @@ export function CommentForm() {
                 </div>
             )}
             <textarea required name="comment" id="comment" placeholder="Add a comment..." className="w-full p-2 border rounded h-24 border-gray-300 "></textarea>
-            <button type="submit" className="mt-2 p-2 bg-blue-600 text-white rounded" disabled={pending}>Submit</button>
+            <button type="submit" className="mt-2 p-2 bg-blue-600 text-white rounded">Submit</button>
         </form>
     );
 }
