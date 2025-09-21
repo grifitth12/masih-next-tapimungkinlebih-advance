@@ -8,7 +8,7 @@ const ininitialState = {
 };
 
 export function CommentForm() {
-    const [state, formAction, pending] = useActionState(CreateComment, ininitialState);
+    const [state, formAction] = useActionState(CreateComment, ininitialState);
     return (
         <form action={formAction} className="space-y-4">
             {state?.error && (

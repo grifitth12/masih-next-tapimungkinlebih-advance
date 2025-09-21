@@ -3,7 +3,6 @@ import { Source_Sans_3, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "./components/header";
 import FooterYes from "./components/footer";
-import { get } from "http";
 import getSettings from "./queris/getSetting";
 
 const fontSans = Source_Sans_3({
