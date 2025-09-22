@@ -2,9 +2,10 @@
 
 import { CreateComment } from "../action";
 import { useActionState } from "react";
+import { type  CommentFormState } from "../types/commentFormState";
 
-const ininitialState = {
-    error: '',
+const ininitialState: CommentFormState = {
+    error: ""
 };
 
 export function CommentForm() {

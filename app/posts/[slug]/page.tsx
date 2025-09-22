@@ -2,10 +2,17 @@ import { CommentForm } from "@/app/components/commentForm";
 import LikeButton from "@/app/components/likeButton";
 import CommentPage from "./comments";
 import { Suspense } from "react";
+import NotFound from "@/app/not-found";
 
 export async function generateMetadata({params}:{params: Promise<{slug:string}>}) {
     const {slug} = await params;
     const post = await getPost(slug);
+    if(!post) {
+        return {
+            title: "Post Not Found",
+            description: "The post you are looking for does not exist.",
+        }
+    }
     return {
         title: post.title,
         description: post.description,
@@ -21,6 +28,9 @@ async function getPost(slug:string) {
 export default async function PostPage({params}:{params: Promise<{slug:string}>}) {
     const {slug} = await params;
     const post = await getPost(slug);
+    if(!post) {
+        return NotFound();
+    }
     return (        
         <>
         <article className="mb-4 p-4 border rounded shadow hover:shadow-lg transition-shadow duration-300">
